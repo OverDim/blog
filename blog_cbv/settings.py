@@ -23,7 +23,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure--e^(52afdg-w24u!_g8a%ku+_oi(zi&9%h6u_r#_%za5vj4l7)'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
+
 
 
 ALLOWED_HOSTS = ['127.0.0.1']
@@ -51,14 +52,13 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
     'apps.accounts.middleware.ActiveUserMiddleware',
 ]
 
@@ -155,9 +155,9 @@ def show_toolbar(request):
     return True
 
 
-DEBUG_TOOLBAR_CONFIG = {
-    "SHOW_TOOLBAR_CALLBACK": show_toolbar,
-}
+#DEBUG_TOOLBAR_CONFIG = {
+#   "SHOW_TOOLBAR_CALLBACK": show_toolbar,
+#}
 
 RECAPTCHA_PUBLIC_KEY = '6LeQHzwqAAAAAKtgbHaWY1m0VE2vhpSjMyJZ1TzR'
 RECAPTCHA_PRIVATE_KEY = '6LeQHzwqAAAAAFh631sWSUrmFJ_KIU3LsRKNYgXn'
@@ -169,6 +169,4 @@ CACHES = {
         'LOCATION': (BASE_DIR / 'cache'),
     }
 }
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
